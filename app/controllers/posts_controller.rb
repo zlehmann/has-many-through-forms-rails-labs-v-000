@@ -1,6 +1,14 @@
 class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
+    @unique_users = []
+    @post.comments.each do |comment|
+      user = User.find(comment.user_id)
+      if @unique_users.exclude?(user)
+        @unique_users << user
+      end
+    end
+    @unique_users
   end
 
   def index

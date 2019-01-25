@@ -1,1 +1,14 @@
 
+<h1><%= @post.title %></h1>
+
+<%= @post.content %>
+
+<h2>Comments:</h2>
+<% @post.comments.each do |comment| %>
+  <%= comment.content %><br>
+<% end %>
+
+<h2>Users who have commented:</h2>
+<% @unique_users.each do |user| %>
+  <%= user.username %>
+<% end %>
