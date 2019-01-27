@@ -20,6 +20,7 @@
 <%= form_for @comment do |f| %>
   <%= f.label :content %>
   <%= f.text_field :content %>
+  <%= f.hidden_field :post_id, :value => @post.id %>
   <%= f.fields_for User.new do |user_fields| %>
     <%= user_fields.collection_select :id, User.all, :id, :username %>
   <% end %>
