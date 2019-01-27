@@ -9,6 +9,8 @@ class PostsController < ApplicationController
       end
     end
     @unique_users
+
+    @comment = Comment.new
   end
 
   def index

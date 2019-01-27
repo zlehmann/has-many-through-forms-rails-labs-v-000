@@ -15,3 +15,13 @@
 <% @unique_users.each do |user| %>
   <%= link_to user.username, user_path(user) %>
 <% end %>
+
+<h2>New Comment: </h2>
+<%= form_for @comment do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.fields_for :users, @comment.user_id do |user_fields| %>
+    <%= user_fields.collection_select :user, User.all, :id, :username %>
+  <% end %>
+<%= f.submit %>
+<% end %>
