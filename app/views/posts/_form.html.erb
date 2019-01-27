@@ -8,10 +8,10 @@
   <%= f.fields_for :categories, post.categories.build do |categories_fields| %>
       <%= categories_fields.text_field :name %>
   <% end %>
-  <%= f.fields_for :comments, post.comments.build do |comments_fields| %>
-    <%= comments_fields.text_field :content %>
-    <%= comments_fields.collection_select :user_id, User.all, :id, :username %>
-  <% end %>
 
+  <%= f.fields_for :comment, post.comments.build do |comment| %>
+    <%= comment.text_field :content %>
+    <%= comment.collection_select :user_id, User.all, :id, :username %>
+  <% end %>
   <%= f.submit %>
 <% end %>
