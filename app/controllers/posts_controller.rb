@@ -3,6 +3,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @unique_users = []
     @post.comments.each do |comment|
+      #binding.pry
       user = User.find(comment.user_id)
       if @unique_users.exclude?(user)
         @unique_users << user
